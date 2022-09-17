@@ -1,0 +1,36 @@
+# This is a basic workflow to help you get started with Actions
+
+name: lint
+
+# Controls when the action will run. 
+on: [push, pull_request, workflow_dispatch]
+
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 18
+        
+      - name: Install Node.js dependencies
+        run: yarn
+
+      - name: Cache
+        uses: actions/cache@v2.1.3
+        with:
+          # An explicit key for restoring and saving the cache
+          path: metasearch
+          key: ${{ runner.os }}-metasearch
+
+      - name: ESlint
+        run: yarn run eslint:github-action

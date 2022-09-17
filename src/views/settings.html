@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Metasearch Settings{% endblock %}
+{% block metatitle %}Metasearch Settings{% endblock %}
+{% block description %}{% endblock %}
+
+{% block body %}
+{% include 'header.html' %}
+<script>
+function setCookie(name, value) {
+	var d = new Date()
+	d.setTime(d.getTime() + (365 * 24 * 60 * 60 * 1000))
+	var expires = `expires=${d.toUTCString()}`
+	document.cookie = `${name}=${value};${expires};path=/`
+} 
+
+document.addEventListener('DOMContentLoaded', () => {
+
+document.getElementById('theme').onchange = e => { setCookie('theme', e.target.value); location.reload() }
+document.getElementById('font').onchange = e => { setCookie('font', e.target.value); location.reload() }
+document.getElementById('debugSetting').onchange = e => setCookie('debug', e.target.checked)
+document.getElementById('showIconsSetting').onchange = e => setCookie('showIcons', e.target.checked)
+
+})
+</script>
+<div id="results">
+	<div>
+		<label for="theme">Theme:</label>
+		<select name="theme" id="theme">
+			{% for theme, value in themes %}
+			<option value="{{ theme }}"{% if activeTheme == theme %} selected{% endif %}>{{ theme|title }}</option>
+			{% endfor %}
+		</select>
+	</div>
+	<div>
+		<label for="font">Font:</label>
+		<select name="font" id="font">
+			{% for font in fonts %}
+			<option value="{{ font }}"{% if activeFont == font %} selected{% endif %}>{{ font|title }}</option>
+			{% endfor %}
+		</select>
+	</div>
+	<div><label for="debugSetting">
+		Debug mode:
+		<input type="checkbox" id="debugSetting"{% if debug %} checked{% endif %}>
+		<span class="checkbox"></span>
+	</label></div>
+	<div><label for="showIconsSetting">
+		Show icons:
+		<input type="checkbox" id="showIconsSetting"{% if showIcons %} checked{% endif %}>
+		<span class="checkbox"></span>
+	</label></div>
+</div>
+{% endblock %}
+
