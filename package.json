@@ -5,7 +5,7 @@
     "cheerio": "^1.0.0-rc.3",
     "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
-    "mcproto": "^0.8.2",
+    "mcproto": "^0.9.0",
     "nunjucks": "^3.2.2",
     "require-dir": "^1.2.0",
     "undici": "^5.4.0"
