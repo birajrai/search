@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
-    <ShortName>neppixelsearch</ShortName>
-    <Description>Search neppixel</Description>
+    <ShortName>Neppixel</ShortName>
+    <Description>Search Neppixel</Description>
     <InputEncoding>UTF-8</InputEncoding>
     <Image height="16" width="16">data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAAE0lEQVR42mNk+M+AFzCOKhhJCgBrLxABLz0PwwAAAABJRU5ErkJggg==</Image>
     <Url type="text/html" method="get" template="https://{{ host }}/search?q={searchTerms}"/>
