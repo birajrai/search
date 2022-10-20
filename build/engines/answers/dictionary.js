@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.request = void 0;
-const commonWords = require('../../../src/common-words.json');
+const commonWords = require("../../../src/common-words.json");
 const parser_1 = require("../../parser");
 const defineRegex = /^(?:define )(.+)$/i;
 async function parseDictionary(url, { containerPath, wordNamePath, phoneticSpellingPath, ipaSpellingPath, entryPaths, partOfSpeechPath, entryDefinitionsPath, definitionPath, definitionLabelPath, }) {
@@ -19,12 +19,12 @@ async function parseDictionary(url, { containerPath, wordNamePath, phoneticSpell
             const label = (0, parser_1.extractText)(definitionEl, definitionLabelPath);
             entryDefinitions.push({
                 label,
-                definition
+                definition,
             });
         }
         entries.push({
             partOfSpeech,
-            definitions: entryDefinitions
+            definitions: entryDefinitions,
         });
     }
     return {
@@ -32,28 +32,28 @@ async function parseDictionary(url, { containerPath, wordNamePath, phoneticSpell
         phoneticSpelling,
         ipaSpelling,
         entries,
-        url
+        url,
     };
 }
 /** Search dictionary.com, this is kinda broken */
 async function dictionaryCom(query) {
-    return await parseDictionary('https://www.dictionary.com/browse/' + encodeURI(query), {
-        containerPath: 'section.serp-nav-button + div',
-        wordNamePath: 'section.entry-headword > div > div h1',
-        phoneticSpellingPath: 'section.entry-headword span.pron-spell-content',
-        ipaSpellingPath: '.pron-ipa-content',
-        entryPaths: 'section.entry-headword ~ section',
-        partOfSpeechPath: '.luna-pos',
-        entryDefinitionsPath: 'section > div > div[value], .default-content > div[value], h3 + div > div[value]',
-        definitionPath: 'div[value] > span.one-click-content:last-of-type',
-        definitionLabelPath: '.luna-label',
+    return await parseDictionary("https://www.dictionary.com/browse/" + encodeURI(query), {
+        containerPath: "section.serp-nav-button + div",
+        wordNamePath: "section.entry-headword > div > div h1",
+        phoneticSpellingPath: "section.entry-headword span.pron-spell-content",
+        ipaSpellingPath: ".pron-ipa-content",
+        entryPaths: "section.entry-headword ~ section",
+        partOfSpeechPath: ".luna-pos",
+        entryDefinitionsPath: "section > div > div[value], .default-content > div[value], h3 + div > div[value]",
+        definitionPath: "div[value] > span.one-click-content:last-of-type",
+        definitionLabelPath: ".luna-label",
     });
 }
 function matchWord(query) {
     const regexMatch = query.match(defineRegex);
     if (regexMatch)
         return regexMatch[1];
-    else if (!query.includes(' ') && !commonWords.includes(query))
+    else if (!query.includes(" ") && !commonWords.includes(query))
         return query;
     return {};
 }
@@ -66,13 +66,13 @@ async function request(query) {
         return {};
     return {
         answer: {
-            template: 'dictionary',
+            template: "dictionary",
             word,
             phoneticSpelling,
             ipaSpelling,
             entries,
-            url
-        }
+            url,
+        },
     };
 }
 exports.request = request;

@@ -9,8 +9,8 @@ async function request(query) {
     const matched = regexMatch[1].trim() || regexMatch[2].trim();
     return {
         answer: {
-            content: `${matched} is ${matched.length} characters long`
-        }
+            content: `${matched} is ${matched.length} characters long`,
+        },
     };
 }
 exports.request = request;

@@ -8,8 +8,8 @@ async function request(query) {
         return {};
     return {
         answer: {
-            template: 'notepad'
-        }
+            template: "notepad",
+        },
     };
 }
 exports.request = request;

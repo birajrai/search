@@ -11,18 +11,18 @@ const jsRegex = /^(?:(?:(?:js|javascript) ?([a-z ]+))|(?:([a-z ]+) (?:js|javascr
 const jsRegex2 = /^(?:(?:(?:js|javascript)(?: what( is|'s|s| are|'re))? ?([a-z ]+))|(?:what( is|'s|s| are|'re))? (?:([a-z ]+) (?:in )?(?:js|javascript)))$/i;
 async function makeSidebarResponse(urlPart) {
     const url = `https://developer.mozilla.org/en-US/docs/Web/${urlPart}`;
-    const dom = (await (0, parser_1.requestDom)(url))('html');
-    if ((0, parser_1.extractText)(dom, 'h1') === 'Page not found')
+    const dom = (await (0, parser_1.requestDom)(url))("html");
+    if ((0, parser_1.extractText)(dom, "h1") === "Page not found")
         return {};
-    const firstParagraph = (0, parser_1.extractText)(dom, 'article p');
+    const firstParagraph = (0, parser_1.extractText)(dom, "article p");
     if (!firstParagraph)
         return {};
     return {
         sidebar: {
-            title: (0, parser_1.extractText)(dom, 'h1'),
+            title: (0, parser_1.extractText)(dom, "h1"),
             content: firstParagraph,
             url,
-        }
+        },
     };
 }
 async function request(query) {
@@ -36,13 +36,13 @@ async function request(query) {
         return await makeSidebarResponse(`HTML/Element/${(_b = match[1]) !== null && _b !== void 0 ? _b : match[2]}`);
     match = query.match(apiRegex);
     if (match)
-        return await makeSidebarResponse(`API/${((_c = match[1]) !== null && _c !== void 0 ? _c : match[2]).replace(/ /g, '_')}`);
+        return await makeSidebarResponse(`API/${((_c = match[1]) !== null && _c !== void 0 ? _c : match[2]).replace(/ /g, "_")}`);
     match = query.match(jsRegex);
     if (match)
-        return await makeSidebarResponse(`JavaScript/${((_d = match[1]) !== null && _d !== void 0 ? _d : match[2]).replace(/ /g, '_')}`);
+        return await makeSidebarResponse(`JavaScript/${((_d = match[1]) !== null && _d !== void 0 ? _d : match[2]).replace(/ /g, "_")}`);
     match = query.match(jsRegex2);
     if (match)
-        return await makeSidebarResponse(`JavaScript/${((_e = match[1]) !== null && _e !== void 0 ? _e : match[2]).replace(/ /g, '_')}`);
+        return await makeSidebarResponse(`JavaScript/${((_e = match[1]) !== null && _e !== void 0 ? _e : match[2]).replace(/ /g, "_")}`);
     return {};
 }
 exports.request = request;
