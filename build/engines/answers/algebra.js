@@ -10,8 +10,8 @@ async function request(query) {
     if (answer && answer != query)
         return {
             answer: {
-                content: answer
-            }
+                content: answer,
+            },
         };
     else
         return {};
@@ -20,7 +20,7 @@ exports.request = request;
 async function autoComplete(query) {
     const answer = (0, math_1.default)(query);
     if (answer)
-        return ['= ' + answer];
+        return ["= " + answer];
     else
         return [];
 }

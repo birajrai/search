@@ -5,7 +5,7 @@ const encodeDecodeRegex = /(?:hex(?:adecimal)?|base ?16) ?(encode|decode|)(?:\s+
 const toFromRegex = /(.+) (to|from) (?:hex(?:adecimal)?|base ?16)/i;
 function hexEncode(string) {
     try {
-        return Buffer.from(string).toString('hex');
+        return Buffer.from(string).toString("hex");
     }
     catch {
         return null;
@@ -13,8 +13,8 @@ function hexEncode(string) {
 }
 function hexDecode(string) {
     try {
-        let decoded = Buffer.from(string, 'hex').toString('utf8');
-        if (decoded.includes('�'))
+        let decoded = Buffer.from(string, "hex").toString("utf8");
+        if (decoded.includes("�"))
             return null;
         else
             return decoded;
@@ -30,26 +30,26 @@ function match(query) {
         if (!toFromRegexMatch)
             return {};
         return {
-            intent: toFromRegexMatch[2].trim().toLowerCase() === 'to' ? 'encode' : 'decode',
-            string: toFromRegexMatch[1].trim()
+            intent: toFromRegexMatch[2].trim().toLowerCase() === "to" ? "encode" : "decode",
+            string: toFromRegexMatch[1].trim(),
         };
     }
     return {
         intent: encodeDecodeRegexMatch[1].trim().toLowerCase(),
-        string: encodeDecodeRegexMatch[2].trim()
+        string: encodeDecodeRegexMatch[2].trim(),
     };
 }
 async function request(query) {
     const matchResponse = match(query);
-    if (!('intent' in matchResponse))
+    if (!("intent" in matchResponse))
         return {};
     const { intent, string } = matchResponse;
     let encoded = null;
     let decoded = null;
-    if (intent == 'encode') {
+    if (intent == "encode") {
         encoded = hexEncode(string);
     }
-    else if (intent == 'decode') {
+    else if (intent == "decode") {
         decoded = hexDecode(string);
     }
     else {
@@ -61,22 +61,22 @@ async function request(query) {
     let title;
     let answer;
     if (encoded && decoded) {
-        title = 'hex encode & decode';
+        title = "hex encode & decode";
         answer = `${encoded}\n\n${decoded}`;
     }
     else if (encoded) {
-        title = 'hex encode';
+        title = "hex encode";
         answer = encoded;
     }
     else if (decoded) {
-        title = 'hex decode';
+        title = "hex decode";
         answer = decoded;
     }
     return {
         answer: {
             title: title,
             content: answer,
-        }
+        },
     };
 }
 exports.request = request;
