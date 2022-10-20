@@ -9,16 +9,16 @@ async function request(query) {
     const intent = regexMatch[1].trim().toLowerCase();
     const string = regexMatch[2].trim();
     let answer;
-    if (intent == 'encode')
+    if (intent == "encode")
         answer = encodeURIComponent(string);
-    else if (intent == 'decode')
+    else if (intent == "decode")
         answer = decodeURIComponent(string);
     if (!answer)
         return {};
     return {
         answer: {
             content: answer,
-        }
+        },
     };
 }
 exports.request = request;
