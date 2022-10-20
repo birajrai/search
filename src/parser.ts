@@ -10,7 +10,7 @@ setInterval(() => {
 }, 60 * 60 * 1000)
 
 
-export async function requestRaw(url: string, session: boolean=false): Promise<string> {
+export async function requestRaw(url: string, session: boolean = false): Promise<string> {
 	let attempts = 0
 
 	let urlObject = new URL(url)
@@ -58,7 +58,7 @@ export async function requestRaw(url: string, session: boolean=false): Promise<s
 				cachedCookies[urlObject.hostname] = cookie
 			return await response.text()
 		}
-		attempts ++
+		attempts++
 	}
 	return ''
 }
@@ -67,7 +67,7 @@ export async function requestJSON(url: string): Promise<any> {
 	return JSON.parse(await requestRaw(url))
 }
 
-export async function requestDom(url, session: boolean=false): Promise<cheerio.Root> {
+export async function requestDom(url, session: boolean = false): Promise<cheerio.Root> {
 	const htmlResponse = await requestRaw(url, session)
 	return cheerio.load(htmlResponse)
 }
@@ -174,12 +174,12 @@ export async function parseResultList(url: string, options: ParseResultListOptio
 	return {
 		results,
 		answer: featuredSnippetContent !== null
-		? {
-			content: featuredSnippetContent,
-			title: featuredSnippetTitle ?? undefined,
-			url: featuredSnippetUrl ?? undefined
-		}
-		: undefined,
+			? {
+				content: featuredSnippetContent,
+				title: featuredSnippetTitle ?? undefined,
+				url: featuredSnippetUrl ?? undefined
+			}
+			: undefined,
 		suggestion: suggestionText
 	}
 }

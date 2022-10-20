@@ -1,26 +1,21 @@
-import { EngineResponse } from '../../search'
-import solve from '../../math'
-
+import { EngineResponse } from "../../search";
+import solve from "../../math";
 
 export async function request(query: string): Promise<EngineResponse> {
-	const answer = solve(query)
-	if (answer && answer != query)
-		return {
-			answer: {
-				content: answer
-			}
-		}
-	else
-		return {}
+  const answer = solve(query);
+  if (answer && answer != query)
+    return {
+      answer: {
+        content: answer,
+      },
+    };
+  else return {};
 }
 
 export async function autoComplete(query) {
-	const answer = solve(query)
-	if (answer)
-		return ['= ' + answer]
-	else
-		return []
+  const answer = solve(query);
+  if (answer) return ["= " + answer];
+  else return [];
 }
 
-
-export const weight = 1.1
+export const weight = 1.1;

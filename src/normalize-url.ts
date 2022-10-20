@@ -59,7 +59,7 @@ function normalizeDataURL(urlString: string, { stripHash }) {
 	return `data:${normalizedMediaType.join(';')},${isBase64 ? data.trim() : data}${hash ? `#${hash}` : ''}`
 }
 
-const normalizeUrl = (urlString, options={} as any) => {
+const normalizeUrl = (urlString, options = {} as any) => {
 	options = {
 		defaultProtocol: 'http:',
 		normalizeProtocol: true,
@@ -131,7 +131,7 @@ const normalizeUrl = (urlString, options={} as any) => {
 	if (urlObj.pathname) {
 		try {
 			urlObj.pathname = decodeURI(urlObj.pathname)
-		} catch (_) {}
+		} catch (_) { }
 	}
 
 	// Remove directory index

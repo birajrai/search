@@ -20,15 +20,15 @@ env.addGlobal('getHost', url => new URL(url).hostname)
 env.addFilter('qs', (params) => {
 	return (
 		Object.keys(params)
-		.map(key => `${key}=${params[key]}`)
-		.join('&')
+			.map(key => `${key}=${params[key]}`)
+			.join('&')
 	)
 })
 
 function loadTheme(name) {
 	let themeData = themes[name]
 	if (!themeData) themeData = themes.dark
-	if (name !== 'light') 
+	if (name !== 'light')
 		themeData = Object.assign({}, loadTheme(themeData.base || 'light'), themeData)
 	return themeData
 }
@@ -58,12 +58,12 @@ function render(res, template, options = {} as RenderOptions & Partial<Options>)
 	return res.render(template, options)
 }
 
-app.get('/', function(req, res) {
+app.get('/', function (req, res) {
 	render(res, 'index.html')
 })
 
 
-app.get('/search', async function(req: ExpressRequest, res) {
+app.get('/search', async function (req: ExpressRequest, res) {
 	const query = req.query.q as string
 	try {
 		const results = await search.request(query, {
@@ -89,22 +89,22 @@ app.get('/search', async function(req: ExpressRequest, res) {
 	}
 })
 
-app.get('/opensearch.xml', async function(req, res) {
+app.get('/opensearch.xml', async function (req, res) {
 	res.header('Content-Type', 'application/xml')
 	render(res, 'opensearch.xml', {
 		host: req.hostname
 	})
 })
 
-app.get('/autocomplete', async function(req, res) {
+app.get('/autocomplete', async function (req, res) {
 	const query = req.query.q
 	const results = await search.autocomplete(query)
 	res
 		.header('Content-Type', 'application/json')
-		.json([ query, results ])
+		.json([query, results])
 })
 
-app.get('/plugins/:plugin', async function(req, res) {
+app.get('/plugins/:plugin', async function (req, res) {
 	let pluginName = req.params.plugin
 	if (pluginName.endsWith('.js')) pluginName = pluginName.slice(0, pluginName.length - 3)
 	const options = req.query
@@ -117,7 +117,7 @@ app.get('/plugins/:plugin', async function(req, res) {
 		render(res, `plugins/${pluginName}.njk`, data)
 })
 
-app.get('/settings', function(req, res) {
+app.get('/settings', function (req, res) {
 	const activeTheme = res.req.cookies.theme || 'brave dark'
 	const activeFont = res.req.cookies.font || 'monaco'
 	render(res, 'settings.html', {

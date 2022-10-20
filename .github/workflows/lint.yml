@@ -2,9 +2,8 @@
 
 name: lint
 
-# Controls when the action will run. 
+# Controls when the action will run.
 on: [push, pull_request, workflow_dispatch]
-
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -21,7 +20,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 18
-        
+
       - name: Install Node.js dependencies
         run: yarn
 

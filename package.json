@@ -27,19 +27,19 @@
   "scripts": {
     "eslint:github-action": "eslint src/**/*.ts",
     "compile": "tsc",
-    "start": "yarn; node build/index.js"
+    "start": "yarn && node build/index.js"
   },
   "description": "Simple search engine inspired by Searx, written in TypeScript. Easy to self host and has no ads or tracking.",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/birajrai/metasearch.git"
+    "url": "git+https://github.com/birajrai/search.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/birajrai/metasearch/issues"
+    "url": "https://github.com/birajrai/search/issues"
   },
-  "homepage": "https://github.com/birajrai/metasearch#readme"
+  "homepage": "https://github.com/birajrai/search#readme"
 }

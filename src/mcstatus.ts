@@ -7,24 +7,24 @@ const defaultOptions = {
 }
 
 export interface Status {
-    version: {
-    name: string
-        protocol: number
-    }
-    players: {
-        max: number
-        online: number
-    }
-    description: string
-    favicon?: string
-    ping?: number
+	version: {
+		name: string
+		protocol: number
+	}
+	players: {
+		max: number
+		online: number
+	}
+	description: string
+	favicon?: string
+	ping?: number
 }
 
 
 export interface StatusOptions {
-    checkPing?: boolean
-    timeout?: number
-    protocol?: number
+	checkPing?: boolean
+	timeout?: number
+	protocol?: number
 }
 
 export async function getStatus(host: string, port?: number | null, options?: StatusOptions): Promise<Status> {
