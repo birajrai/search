@@ -4,7 +4,7 @@
     "lib": ["esnext", "dom", "DOM.Iterable"],
     "target": "es2019",
     "esModuleInterop": true,
-    "outDir": "ebuild",
+    "outDir": "build",
     "allowJs": true,
     "strictNullChecks": true
   },
