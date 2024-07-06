@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.request = void 0;
+exports.request = request;
 const mcstatus_1 = require("../../mcstatus");
 const minecraftRegex = /^(?:(?:minecraft|mc|server|ping|srv|serv|mine craft| )*?) *\b([-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}(?::\d{5})?)\b *(?:(?:minecraft|mc|server|ping|srv|serv|mine craft| )*?)$/i;
 const colorCodes = {
@@ -223,4 +223,3 @@ async function request(query) {
     else
         return {};
 }
-exports.request = request;

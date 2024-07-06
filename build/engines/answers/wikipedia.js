@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.request = void 0;
+exports.request = request;
 const parser_1 = require("../../parser");
 const wikipediaRegex = /^([^<>]+)$/i;
 async function request(query) {
@@ -26,4 +26,3 @@ async function request(query) {
         },
     };
 }
-exports.request = request;

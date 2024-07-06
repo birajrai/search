@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.weight = exports.request = void 0;
+exports.weight = void 0;
+exports.request = request;
 const parser_1 = require("../../parser");
 async function request(query) {
     return await (0, parser_1.parseResultList)('https://www.bing.com/search?q=' + encodeURIComponent(query), {
@@ -11,5 +12,4 @@ async function request(query) {
         suggestionPath: 'li.b_ans > #sp_requery > a[href] > strong',
     });
 }
-exports.request = request;
 exports.weight = 1.0;

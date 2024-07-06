@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getStatus = void 0;
+exports.getStatus = getStatus;
 const mcproto_1 = require("mcproto");
 const defaultOptions = {
     checkPing: true,
@@ -28,4 +28,3 @@ async function getStatus(host, port, options) {
     client.end();
     return status;
 }
-exports.getStatus = getStatus;

@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.weight = exports.request = void 0;
+exports.weight = void 0;
+exports.request = request;
 const notepadRegex = /^(python|js|javascript|html|xml|code)? ?(note ?pad|text ?(area|editor)|editor)$/i;
 async function request(query) {
     const regexMatch = query.match(notepadRegex);
@@ -12,5 +13,4 @@ async function request(query) {
         },
     };
 }
-exports.request = request;
 exports.weight = 2;

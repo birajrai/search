@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.changeOptions = exports.runPlugin = void 0;
+exports.runPlugin = runPlugin;
+exports.changeOptions = changeOptions;
 const parser_1 = require("../../parser");
 const githubHost = 'https://github.com';
 async function runPlugin({ author, name }) {
@@ -18,7 +19,6 @@ async function runPlugin({ author, name }) {
         url
     };
 }
-exports.runPlugin = runPlugin;
 async function changeOptions(options) {
     if (options.sidebar)
         // an answer was already found, no need to search for one
@@ -39,4 +39,3 @@ async function changeOptions(options) {
     }
     return options;
 }
-exports.changeOptions = changeOptions;

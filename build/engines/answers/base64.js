@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.request = void 0;
+exports.request = request;
 const base64Regex = /^b(?:ase)?64( encode| decode|)(?:\s+)(.+)$/i;
 function base64Encode(string) {
     try {
@@ -66,4 +66,3 @@ async function request(query) {
         },
     };
 }
-exports.request = request;

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.request = void 0;
+exports.request = request;
 const lengthofRegex = /^(?:(?:how long is|len(?:gth(?: of)?)?|(?:(?:number of |how many )?char(?:acters|s) in))(.+?)|(.+?)(?:len(?:gth)))$/i;
 async function request(query) {
     const regexMatch = query.match(lengthofRegex);
@@ -13,4 +13,3 @@ async function request(query) {
         },
     };
 }
-exports.request = request;

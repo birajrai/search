@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.request = void 0;
+exports.request = request;
 const parser_1 = require("../../parser");
 const cssRegex = /^(?:(?:css ([a-z-]+))|(?:([a-z-]+) css))$/i;
 const htmlRegex = /^(?:(?:html ([a-z-]+)(?: element)?)|(?:([a-z-]+)(?: element)? html))$/i;
@@ -45,4 +45,3 @@ async function request(query) {
         return await makeSidebarResponse(`JavaScript/${((_e = match[1]) !== null && _e !== void 0 ? _e : match[2]).replace(/ /g, "_")}`);
     return {};
 }
-exports.request = request;

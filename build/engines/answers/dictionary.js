@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.request = void 0;
+exports.request = request;
 const commonWords = require("../../../src/common-words.json");
 const parser_1 = require("../../parser");
 const defineRegex = /^(?:define )(.+)$/i;
@@ -75,4 +75,3 @@ async function request(query) {
         },
     };
 }
-exports.request = request;
