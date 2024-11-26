@@ -25,7 +25,7 @@ jobs:
         run: yarn
 
       - name: Cache
-        uses: actions/cache@v3.0.11
+        uses: actions/cache@v3.3.3
         with:
           # An explicit key for restoring and saving the cache
           path: metasearch
