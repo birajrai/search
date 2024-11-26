@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.request = void 0;
+exports.request = request;
 const { requestJSON } = require("../../parser");
 // if you want to make this regex less cursed, good luck :)
 const minecraftRegex = /^(?:(?:(?:namemc) *\b(.{1,16}|[0-9a-f]{8}-?[0-9a-f]{4}-?[0-9a-f]{4}-?[0-9a-f]{4}-?[0-9a-f]{12})\b)|(?:\b(.{1,16}|[0-9a-f]{8}-?[0-9a-f]{4}-?[0-9a-f]{4}-?[0-9a-f]{4}-?[0-9a-f]{12})\b(?:namemc)))$/i;
@@ -27,4 +27,3 @@ async function request(query) {
         },
     };
 }
-exports.request = request;

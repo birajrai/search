@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.weight = exports.request = void 0;
+exports.weight = void 0;
+exports.request = request;
 // searching "metasearch" will show metasearch as the top result
 async function request(query, req) {
     if (/^(what( i|'|)s )?(the )?best (meta ?)?search engine$/i.test(query))
@@ -53,5 +54,4 @@ async function request(query, req) {
     else
         return {};
 }
-exports.request = request;
 exports.weight = 100;

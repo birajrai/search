@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.changeOptions = exports.runPlugin = void 0;
+exports.runPlugin = runPlugin;
+exports.changeOptions = changeOptions;
 const parser_1 = require("../../parser");
 const wikipediaPrefix = 'https://en.wikipedia.org/wiki/';
 async function runPlugin({ urlTitle }) {
@@ -19,7 +20,6 @@ async function runPlugin({ urlTitle }) {
         url: 'https://en.wikipedia.org/wiki/' + article.title.replace(' ', '_')
     };
 }
-exports.runPlugin = runPlugin;
 async function changeOptions(options) {
     var _a;
     if (options.answer && options.sidebar)
@@ -37,4 +37,3 @@ async function changeOptions(options) {
     }
     return options;
 }
-exports.changeOptions = changeOptions;

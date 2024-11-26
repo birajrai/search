@@ -3,7 +3,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.runPlugin = exports.autocomplete = exports.request = void 0;
+exports.request = request;
+exports.autocomplete = autocomplete;
+exports.runPlugin = runPlugin;
 const normalize_url_1 = __importDefault(require("./normalize-url"));
 const perf_hooks_1 = require("perf_hooks");
 const require_dir_1 = __importDefault(require("require-dir"));
@@ -149,7 +151,6 @@ async function request(query, req) {
         plugins: {} // these will be modified by plugins()
     });
 }
-exports.request = request;
 async function autocomplete(query) {
     var _a;
     const enginesResults = await requestAllAutoCompleteEngines(query);
@@ -164,7 +165,6 @@ async function autocomplete(query) {
     }
     return sortByFrequency(weightedItems).slice(0, 10);
 }
-exports.autocomplete = autocomplete;
 // do some last second non-http modifications to the results
 async function requestAllPlugins(options) {
     for (const pluginName in plugins) {
@@ -177,4 +177,3 @@ async function requestAllPlugins(options) {
 async function runPlugin({ pluginName, options }) {
     return await plugins[pluginName].runPlugin(options);
 }
-exports.runPlugin = runPlugin;

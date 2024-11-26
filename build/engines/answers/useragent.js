@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.request = void 0;
+exports.request = request;
 async function request(query, req) {
     var _a, _b, _c;
     if (query
@@ -19,4 +19,3 @@ async function request(query, req) {
     else
         return {};
 }
-exports.request = request;

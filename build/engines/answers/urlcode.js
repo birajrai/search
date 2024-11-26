@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.request = void 0;
+exports.request = request;
 const urlcodeRegex = /^(?:ur[li] (encode|decode) )(.+)$/i;
 async function request(query) {
     const regexMatch = query.match(urlcodeRegex);
@@ -21,4 +21,3 @@ async function request(query) {
         },
     };
 }
-exports.request = request;

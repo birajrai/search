@@ -23,7 +23,15 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.parseResultList = exports.extractHref = exports.extractAttribute = exports.extractText = exports.getElements = exports.get = exports.requestDom = exports.requestJSON = exports.requestRaw = void 0;
+exports.requestRaw = requestRaw;
+exports.requestJSON = requestJSON;
+exports.requestDom = requestDom;
+exports.get = get;
+exports.getElements = getElements;
+exports.extractText = extractText;
+exports.extractAttribute = extractAttribute;
+exports.extractHref = extractHref;
+exports.parseResultList = parseResultList;
 const undici_1 = require("undici");
 const cheerio = __importStar(require("cheerio"));
 let cachedCookies = {};
@@ -82,20 +90,16 @@ async function requestRaw(url, session = false) {
     }
     return '';
 }
-exports.requestRaw = requestRaw;
 async function requestJSON(url) {
     return JSON.parse(await requestRaw(url));
 }
-exports.requestJSON = requestJSON;
 async function requestDom(url, session = false) {
     const htmlResponse = await requestRaw(url, session);
     return cheerio.load(htmlResponse);
 }
-exports.requestDom = requestDom;
 function get(dom, query) {
     return dom.find(query);
 }
-exports.get = get;
 function getElements(dom, query) {
     const elements = get(dom, query);
     const results = [];
@@ -104,7 +108,6 @@ function getElements(dom, query) {
     }
     return results;
 }
-exports.getElements = getElements;
 function extractText(dom, query) {
     const element = get(dom, query);
     if (element.first && element.first.name === 'ol') {
@@ -120,13 +123,11 @@ function extractText(dom, query) {
     }
     return element.first().text().trim();
 }
-exports.extractText = extractText;
 function extractAttribute(dom, query, attribute) {
     var _a;
     const element = get(dom, query);
     return (_a = element.attr(attribute)) !== null && _a !== void 0 ? _a : null;
 }
-exports.extractAttribute = extractAttribute;
 function extractHref(dom, query) {
     const elementHref = extractAttribute(dom, query, 'href');
     if (elementHref)
@@ -136,7 +137,6 @@ function extractHref(dom, query) {
         return elementText;
     return null;
 }
-exports.extractHref = extractHref;
 // for search engines like google, bing, etc
 async function parseResultList(url, options) {
     var _a;
@@ -187,4 +187,3 @@ async function parseResultList(url, options) {
         suggestion: suggestionText
     };
 }
-exports.parseResultList = parseResultList;

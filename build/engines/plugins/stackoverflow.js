@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.changeOptions = exports.runPlugin = void 0;
+exports.runPlugin = runPlugin;
+exports.changeOptions = changeOptions;
 const parser_1 = require("../../parser");
 const stackOverflowHost = 'https://stackoverflow.com';
 async function runPlugin({ id }) {
@@ -24,7 +25,6 @@ async function runPlugin({ id }) {
         originalUrl: originalUrl.replace(/`/g, '\\`')
     };
 }
-exports.runPlugin = runPlugin;
 async function changeOptions(options) {
     if (options.answer && options.sidebar)
         // an answer was already returned from somewhere else
@@ -42,4 +42,3 @@ async function changeOptions(options) {
     }
     return options;
 }
-exports.changeOptions = changeOptions;

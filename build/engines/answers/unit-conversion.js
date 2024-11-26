@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.request = void 0;
+exports.request = request;
 // seconds in a day
 // how many seconds are in a day
 // day to second
@@ -42,4 +42,3 @@ async function request(query) {
         },
     };
 }
-exports.request = request;

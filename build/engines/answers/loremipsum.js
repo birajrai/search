@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.request = void 0;
+exports.request = request;
 async function request(query) {
     if (query.toLowerCase().includes("lorem ipsum"))
         return {
@@ -11,4 +11,3 @@ async function request(query) {
     else
         return {};
 }
-exports.request = request;

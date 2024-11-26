@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.request = void 0;
+exports.request = request;
 const encodeDecodeRegex = /(?:hex(?:adecimal)?|base ?16) ?(encode|decode|)(?:\s+)(.+)/i;
 const toFromRegex = /(.+) (to|from) (?:hex(?:adecimal)?|base ?16)/i;
 function hexEncode(string) {
@@ -79,4 +79,3 @@ async function request(query) {
         },
     };
 }
-exports.request = request;
