@@ -26,13 +26,13 @@ const timezones = {
     HST: -10,
     AST: -9,
     PST: -8,
-    PDT: -7,
+    PDT: -7, // daylight savings time
     PNT: -7,
     MST: -7,
     CST: -6,
-    CDT: -5,
+    CDT: -5, // daylight savings time
     EST: -5,
-    EDT: -4,
+    EDT: -4, // daylight savings time
     IET: -5,
     PRT: -4,
     CNT: -3.5,
