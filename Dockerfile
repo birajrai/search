@@ -1,17 +1,17 @@
-# Use a minimal base image for running binaries
-FROM debian:stable-slim
+# Use a lightweight base image
+FROM debian:bullseye-slim
 
 # Set working directory
 WORKDIR /app
 
-# Copy the metasearch binary
-COPY metasearch /app/metasearch
+# Copy the metasearch binary into the container
+COPY metasearch .
 
-# Make sure the binary is executable
-RUN chmod +x /app/metasearch
+# Make sure it’s executable
+RUN chmod +x metasearch
 
-# Expose a port if your binary serves HTTP (optional)
-# EXPOSE 8080
+# Expose the port the app listens on
+EXPOSE 10000
 
 # Run the binary
-CMD ["/app/metasearch"]
+CMD ["./metasearch"]
