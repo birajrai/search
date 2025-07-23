@@ -1,17 +1,16 @@
-# Use a lightweight base image
 FROM debian:bullseye-slim
 
-# Set working directory
 WORKDIR /app
 
-# Copy the metasearch binary into the container
+# Install runtime dependencies in case binary is dynamically linked
+RUN apt-get update && apt-get install -y libstdc++6 libc6 && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Copy binary from repo
 COPY metasearch .
 
-# Make sure it’s executable
-RUN chmod +x metasearch
+# Make it executable
+RUN chmod +x ./metasearch
 
-# Expose the port the app listens on
 EXPOSE 10000
-
-# Run the binary
 CMD ["./metasearch"]
