@@ -1,10 +1,17 @@
 FROM ubuntu:22.04
 
-RUN apt update && apt install -y build-essential
+# Install dependencies required to run the binary
+RUN apt update && apt install -y \
+    ca-certificates \
+    openssl \
+    && rm -rf /var/lib/apt/lists/*
 
-COPY . /app
 WORKDIR /app
 
-RUN gcc -o metasearch metasearch.c  # or your actual build command
+# Copy the precompiled binary into the container
+COPY metasearch .
+
+# Make it executable (if not already)
+RUN chmod +x ./metasearch
 
 CMD ["./metasearch"]
