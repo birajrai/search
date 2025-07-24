@@ -1,7 +1,7 @@
 FROM ubuntu:22.04
 
 # Install dependencies required to run the binary
-RUN apt update && apt install -y \
+RUN apt update && apt install -y gcc && apt install -y \
     ca-certificates \
     openssl \
     && rm -rf /var/lib/apt/lists/*
